@@ -1,0 +1,102 @@
+<form class="form-horizontal needs-validation" novalidate [formGroup]="productForm">
+  <div class="container">  
+    <div class="row">
+    <div class="col-sm-12">
+      <label for="name">Product Name</label>
+    </div>
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name" [ngClass]="{ 'is-invalid': submitted && hasError('name') }" >
+      <div class="invalid-feedback" *ngIf="hasError('name') && hasError('name')?.['required']">
+        Report a product!
+      </div>
+      <div class="invalid-feedback" *ngIf="hasError('name') && hasError('name')?.['minlength']">
+        name needs at least: {{ hasError('name')?.['minlength'].requiredLength }} characters.
+      </div>
+      <div class="invalid-feedback" *ngIf="hasError('name') && hasError('name')?.['maxlength']">
+        name needs at most: {{ hasError('name')?.['maxlength'].requiredLength }} characters.
+      </div>
+    </div>   
+  </div>
+  
+  <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="amountPurchase">Amount Purchase</label>
+          <input type="number" formControlName="amountPurchase" class="form-control" id="amountPurchase" placeholder="Amount Purchase" formControlName="amountPurchase" [ngClass]="{ 'is-invalid': submitted && hasError('amountPurchase') }">
+            <div class="invalid-feedback" *ngIf="hasError('amountPurchase') && hasError('amountPurchase')?.['required']">
+              Inform the amount purchase!
+            </div>                   
+        </div>
+        <div class="col-md-3">
+          <label for="amountSold">Amount Sold</label>
+          <input type="number" formControlName="amountSold" (change)="calc2()" class="form-control" id="amountSold" placeholder="Amount Sold" formControlName="amountSold" [ngClass]="{ 'is-invalid': submitted && hasError('amountSold') }">
+            <div class="invalid-feedback" *ngIf="hasError('amountSold') && hasError('amountSold')?.['required']">
+              Inform the amount sold!
+            </div>          
+        </div>
+      <div class="col-md-3">
+        <label for="stock">Stock</label>
+        <input type="number" formControlName="stock" class="form-control" id="stock" placeholder="Stock" formControlName="stock" [ngClass]="{ 'is-invalid': submitted && hasError('stock') }">
+            <div class="invalid-feedback" *ngIf="hasError('stock') && hasError('stock')?.['required']">
+              Inform the amount stock!
+            </div>
+        </div>
+        <div class="col-md-3">
+          <label for="purchasePrice">Purchase Price</label>
+          <input type="number" formControlName="purchasePrice" class="form-control" id="purchasePrice" placeholder="Purchase Price" formControlName="purchasePrice" [ngClass]="{ 'is-invalid': submitted && hasError('purchasePrice') }">
+              <div class="invalid-feedback" *ngIf="hasError('purchasePrice') && hasError('purchasePrice')?.['required']">
+                Inform the purchase price!
+              </div>
+          </div>
+      </div>
+    </div>   
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-3">
+        <label for="percentage">Percentage</label>
+        <input type="number" formControlName="percentage" (change)="calc()" class="form-control" id="percentage" placeholder="Percentage" formControlName="percentage" [ngClass]="{ 'is-invalid': submitted && hasError('percentage') }">
+              <div class="invalid-feedback" *ngIf="hasError('percentage') && hasError('percentage')?.['required']">
+                Inform the percentage!
+              </div>       
+          </div>
+      <div class="col-md-5">
+        <label for="saleValue">Sale Value</label>
+        <input type="number" formControlName="saleValue" class="form-control" id="saleValue" placeholder="Sale Value" formControlName="saleValue" [ngClass]="{ 'is-invalid': submitted && hasError('saleValue') }">
+              <div class="invalid-feedback" *ngIf="hasError('saleValue') && hasError('saleValue')?.['required']">
+                Inform the Sale Value!
+              </div>        
+          </div>
+    <div class="col-md-4">
+      <label for="phone">Phone</label>
+      <input type="text" formControlName="phone" class="form-control" id="phone" placeholder="Phone" formControlName="phone" [ngClass]="{ 'is-invalid': submitted && hasError('phone') }">
+              <div class="invalid-feedback" *ngIf="hasError('phone') && hasError('phone')?.['required']">
+                Inform the Phone!
+              </div>      
+            </div>
+          </div>
+      </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-7">
+        <label for="supplier">Supplier</label>
+        <input type="text" formControlName="supplier" class="form-control" id="supplier" placeholder="Supplier" formControlName="supplier" [ngClass]="{ 'is-invalid': submitted && hasError('supplier') }">
+              <div class="invalid-feedback" *ngIf="hasError('supplier') && hasError('supplier')?.['required']">
+                Inform the Supplier!
+              </div>       
+          </div>
+      <div class="col-md-5">
+        <label for="cnpj">CNPJ</label>
+        <input type="text" formControlName="cnpj" class="form-control" id="cnpj" placeholder="CNPJ" formControlName="cnpj" [ngClass]="{ 'is-invalid': submitted && hasError('cnpj') }">
+              <div class="invalid-feedback" *ngIf="hasError('cnpj') && hasError('cnpj')?.['required']">
+                Inform the CNPJ!
+              </div>        
+            </div>    
+        </div>
+    </div>
+    <div style="margin-top: 10px;">
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Save</button>
+      <button type="button" class="btn btn-default" (click)="onCancel()">Cancel</button>
+    </div> 
+  </div>
+</form>
+

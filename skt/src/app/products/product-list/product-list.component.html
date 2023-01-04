@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="card-header">
+    <div class="float-start">
+      <h4>Product List</h4>
+    </div>
+
+    <div class="float-end">
+      <button type="button" class="btn btn-primary btn-sm" [routerLink]="['new']">
+        New Product
+      </button>
+      <button type="button" class="btn btn-warning btn-sm" (click)="onRefresh()">
+       To Update
+      </button>
+    </div>
+  </div>
+    <div class="card-body">
+      <table class="table table-hover" *ngIf="products$ | async as products; else loading">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Products</th>
+            <th>Amount Purchase</th>
+            <th>Amount Sold</th>
+            <th>Stock</th>
+            <th>Purchase Price</th>
+            <th>Percentage</th>
+            <th>Sale Value</th>
+            <th>Phone</th>
+            <th>Supplier</th>
+            <th>CNPJ</th>            
+            <th></th>            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.amountPurchase }}</td>
+            <td>{{ product.amountSold }}</td>
+            <td>{{ product.stock }}</td>
+            <td>{{ product.purchasePrice }}</td>
+            <td>{{ product.percentage }}</td>
+            <td>{{ product.saleValue }}</td>
+            <td>{{ product.phone }}</td>
+            <td>{{ product.supplier }}</td>
+            <td>{{ product.cnpj }}</td>            
+            <td>
+              <span class="float-end">
+                <button class="btn btn-outline-warning ml-1 btn-sm" (click)="onEdit(product.id)">Update</button>
+                <button class="btn btn-outline-danger ml-1 btn-sm" (click)="onDelete(product)">Remove</button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #loading>
+        <span>Loading list...</span>
+      </ng-template>      
+    </div>
+  </div>  
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Are you sure you want to remove the product?</p>
+    <button type="button" class="btn btn-default" (click)="onConfirmDelete()">Yes</button>
+    <button type="button" class="btn btn-primary" (click)="onDeclineDelete()">No</button>
+  </div>
+</ng-template>
+
