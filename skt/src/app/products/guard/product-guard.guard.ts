@@ -19,7 +19,7 @@ export class ProductGuardGuard implements Resolve<Product> {
     if (route.params && route.params['id']) {
       return this.productService.loadByID(route.params['id']);
     }
-    
+
     return of({
       id: null,
       nome: null,
@@ -33,5 +33,5 @@ export class ProductGuardGuard implements Resolve<Product> {
       cnpj:null,
       phone:null,
     });
-  }  
+  }
 }

@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ProductGuardGuard } from './guard/product-guard.guard';
+import { HomeComponent } from './home/home.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
 const routes: Routes = [
   { path: '', component: ProductListComponent },
+  { path: 'home', component: HomeComponent},
   { path: 'new', component: ProductCreateComponent, resolve: {
     product: ProductGuardGuard
   }},

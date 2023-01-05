@@ -43,5 +43,5 @@ export class ProductService {
   remove(id: any) {
     return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
   }
-
+  
 }

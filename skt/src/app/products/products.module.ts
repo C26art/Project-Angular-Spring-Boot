@@ -6,19 +6,23 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
   declarations: [
     ProductListComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    IonicModule
   ]
 })
 export class ProductsModule { }

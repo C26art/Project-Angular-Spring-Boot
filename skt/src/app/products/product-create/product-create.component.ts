@@ -17,10 +17,10 @@ export class ProductCreateComponent implements OnInit{
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService, private modal: AlertModalService, private location: Location, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {      
+  ngOnInit(): void {
 
     const product = this.route.snapshot.data['product'];
-        
+
     this.productForm = this.formBuilder.group({
       id: [product.id],
       name: [product.name, [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
@@ -32,10 +32,10 @@ export class ProductCreateComponent implements OnInit{
       saleValue: [product.saleValue,[Validators.required]],
       phone: [product.phone,[Validators.required,Validators.pattern(/(\(?\d{2}\)?\s)?(\d{4,5}\-?\d{4})$/)]],
       supplier: [product.supplier,[Validators.required]],
-      cnpj: [product.cnpj,[Validators.required]]      
-    });      
-  } 
-  
+      cnpj: [product.cnpj,[Validators.required]]
+    });
+  }
+
 
   hasError(field: string) {
     return this.productForm.get(field)?.errors;
@@ -61,32 +61,36 @@ export class ProductCreateComponent implements OnInit{
         error: (error) => {
           this.modal.showAlertDanger('Error when updating product. Try again!');
         }
-      });     
+      });
     }
-  }  
+  }
 
   onCancel() {
     this.submitted = false;
-    this.productForm.reset();    
+    this.productForm.reset();
+  }
+
+  onReturn() {
+    this.location.back();
   }
 
   calc(): void {
     let purchasePrice = this.productForm.get('purchasePrice')?.value;
     let percentage = this.productForm.get('percentage')?.value;
-  
+
     let calcVenda = purchasePrice + (purchasePrice * (percentage / 100));
-  
+
     this.productForm.patchValue({
       saleValue: calcVenda
     })
   }
-  
+
   calc2(): void {
     let amountSold = this.productForm.get('amountSold')?.value;
     let amountPurchase = this.productForm.get('amountPurchase')?.value;
-  
+
     let calEstoque = amountPurchase - amountSold;
-  
+
     this.productForm.patchValue({
       stock: calEstoque
     });
