@@ -1,20 +1,26 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ProductsRoutingModule } from './products-routing.module';
-import { ProductListComponent } from './product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductCreateComponent } from './product-create/product-create.component';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
 import { IonicModule } from '@ionic/angular';
+
+import { HomeComponent } from './home/home.component';
+import { ProductCreateComponent } from './product-create/product-create.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductsRoutingModule } from './products-routing.module';
+import { UsersComponent } from './users/users.component';
+
+
+
 
 
 @NgModule({
   declarations: [
     ProductListComponent,
     ProductCreateComponent,
-    HomeComponent
+    HomeComponent,
+    UsersComponent,
+
   ],
   imports: [
     CommonModule,
@@ -22,7 +28,8 @@ import { IonicModule } from '@ionic/angular';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    IonicModule
-  ]
+    IonicModule,
+  ],
+  providers: []
 })
 export class ProductsModule { }

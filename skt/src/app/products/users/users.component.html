@@ -1,0 +1,36 @@
+
+<form [formGroup]="userForm">
+  <div class="imgcontainer">
+    <img src="assets/images/logo.webp" alt="logo" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="name"><b>Username</b></label>
+    <input type="text" class="form-control" placeholder="Enter Username" id="name" formControlName="name" [ngClass]="{ 'is-invalid': submitted && hasError('name') }">
+    <div class="invalid-feedback" *ngIf="hasError('name') && hasError('name')?.['required']">
+      Report a product!
+    </div>
+    <div class="invalid-feedback" *ngIf="hasError('name') && hasError('name')?.['minlength']">
+      name needs at least: {{ hasError('name')?.['minlength'].requiredLength }} characters.
+    </div>
+    <div class="invalid-feedback" *ngIf="hasError('name') && hasError('name')?.['maxlength']">
+      name needs at most: {{ hasError('name')?.['maxlength'].requiredLength }} characters.
+    </div>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" class="form-control" placeholder="Enter Password" id="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && hasError('password') }">
+    <div class="invalid-feedback" *ngIf="hasError('password') && hasError('password')?.['required']">
+      Inform the password!
+    </div>>
+
+    <button type="submit" (click)="onSubmit()">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn" (click)="onCancel()">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
